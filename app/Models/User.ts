@@ -7,7 +7,19 @@ export default class User extends BaseModel {
   public id: number
 
   @column()
+  public lastname: string
+
+  @column()
+  public firstname: string
+
+  @column()
   public email: string
+
+  @column()
+  public username: string
+
+  @column()
+  public userToken: string
 
   @column({ serializeAs: null })
   public password: string
@@ -22,7 +34,7 @@ export default class User extends BaseModel {
   public updatedAt: DateTime
 
   @beforeSave()
-  public static async hashPassword (user: User) {
+  public static async hashPassword(user: User) {
     if (user.$dirty.password) {
       user.password = await Hash.make(user.password)
     }
