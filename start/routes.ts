@@ -30,4 +30,5 @@ Route.group(() =>{
   Route.get('/search/:username', 'UsersController.search');
   Route.post('/login', 'UsersController.login');
   Route.post('/logout', 'UsersController.login');
+  Route.delete('/delete', 'UsersController.delete');
 }).prefix('user')

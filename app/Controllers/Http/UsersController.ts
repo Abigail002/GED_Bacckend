@@ -47,4 +47,19 @@ export default class UsersController {
         await auth.logout()
         return response.status(200)
     }
+
+    //Delete a user
+    public async delete({ request, response, auth }: HttpContextContract) {
+        //const password = await request.input('password')
+        const email = await request.input('email')
+
+        const data = await User.findBy("email", email);
+
+        if(!data){
+            return response.notFound({error: {message: "User not found"}});
+        }
+
+        await data.delete();
+        return response.ok({error: {message: "User successfully deleted"}});
+    }
 }
