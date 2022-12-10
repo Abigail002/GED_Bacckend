@@ -31,6 +31,10 @@
       "@japa/preset-adonis/build/adonis-typings",
       "@adonisjs/lucid",
       "@adonisjs/auth"
+    ],
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
     ]
   }
 }

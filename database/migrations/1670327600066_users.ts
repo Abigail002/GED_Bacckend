@@ -10,15 +10,17 @@ export default class extends BaseSchema {
       table.string('firstname',180).notNullable()
       table.string('email', 255).notNullable().unique()
       table.string('username', 180).notNullable().unique()
-      table.string('userToken', 15).notNullable().unique()
+      table.string('jeton', 100).notNullable().unique()
       table.string('password', 180).notNullable()
       table.string('remember_me_token').nullable()
 
       /**
        * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
        */
-      table.timestamp('created_at', { useTz: true }).notNullable()
-      table.timestamp('updated_at', { useTz: true }).notNullable()
+      table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now())
+      table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.now())
+
+      table.index(['id', 'email', 'username'])
     })
   }
 

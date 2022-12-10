@@ -19,7 +19,7 @@ export default class User extends BaseModel {
   public username: string
 
   @column()
-  public userToken: string
+  public jeton: string
 
   @column({ serializeAs: null })
   public password: string
